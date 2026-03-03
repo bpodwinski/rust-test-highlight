@@ -35,8 +35,14 @@
 		],
 		"semanticTokenTypes": [
 			{
-				"id": "rustTestHighlight.testScope",
-				"description": "Semantic token type for Rust inline tests module scope."
+				"id": "rustTestHighlight",
+				"description": "Semantic token type for Rust test scope."
+			}
+		],
+		"semanticTokenModifiers": [
+			{
+				"id": "testScope",
+				"description": "Modifier for inline Rust tests module scope."
 			}
 		],
 		"configuration": {

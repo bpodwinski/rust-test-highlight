@@ -10,6 +10,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Add overview ruler markers for highlighted `tests` modules, using `rustTestHighlight.backgroundColor` for both editor background and overview ruler rendering.
 - Add Rust semantic token support for inline `tests` module scopes via `rustTestHighlight.testScope`, with `rustTestHighlight.semanticTokens.enabled` to toggle emission.
+- Fix semantic token matching by using `rustTestHighlight` type + `testScope` modifier so `rustTestHighlight.testScope` rules apply correctly (including minimap text coloring).
 
 ## [0.1.5] - 2024-02-27
 

@@ -117,7 +117,8 @@ This same `rustTestHighlight.backgroundColor` token is used for both the inline 
 
 ## Semantic Token Coloring (Minimap Text)
 
-This extension also contributes a semantic token type for inline `mod tests` scopes: `rustTestHighlight.testScope`.
+This extension also contributes a semantic token selector for inline `mod tests` scopes: `rustTestHighlight.testScope`.
+This selector is `type.modifier` (`rustTestHighlight` + `testScope`), not a raw token type id.
 When semantic highlighting is enabled in your theme/editor, this can color the code text in the editor and minimap.
 
 Use `rustTestHighlight.semanticTokens.enabled` (default: `true`) to enable or disable semantic token emission from this extension.

@@ -4,14 +4,18 @@ import { default as dlv } from "dlv";
 import * as vscode from "vscode";
 import { walkAst } from "./ast";
 
-const TEST_SCOPE_SEMANTIC_TOKEN = "rustTestHighlight.testScope";
+const TEST_SCOPE_SEMANTIC_TOKEN_TYPE = "rustTestHighlight";
+const TEST_SCOPE_SEMANTIC_TOKEN_MODIFIER = "testScope";
 const SEMANTIC_TOKENS_SETTING_KEY = "rustTestHighlight.semanticTokens.enabled";
 
 export function activate(context: vscode.ExtensionContext) {
 	const isDev = context.extensionMode === vscode.ExtensionMode.Development;
 	let timeout: ReturnType<typeof setTimeout> | undefined = undefined;
 	let testDecoration: vscode.TextEditorDecorationType | undefined = undefined;
-	const semanticTokensLegend = new vscode.SemanticTokensLegend([TEST_SCOPE_SEMANTIC_TOKEN], []);
+	const semanticTokensLegend = new vscode.SemanticTokensLegend(
+		[TEST_SCOPE_SEMANTIC_TOKEN_TYPE],
+		[TEST_SCOPE_SEMANTIC_TOKEN_MODIFIER]
+	);
 	const semanticTokensChangedEmitter = new vscode.EventEmitter<void>();
 
 	const synReady = fetch(synWasmUrl)
@@ -245,7 +249,9 @@ function pushRangeSemanticTokensByLine(
 		const tokenLength = endChar - startChar;
 
 		if (tokenLength > 0) {
-			builder.push(lineNumber, startChar, tokenLength, TEST_SCOPE_SEMANTIC_TOKEN, []);
+			builder.push(lineNumber, startChar, tokenLength, TEST_SCOPE_SEMANTIC_TOKEN_TYPE, [
+				TEST_SCOPE_SEMANTIC_TOKEN_MODIFIER,
+			]);
 		}
 	}
 }
