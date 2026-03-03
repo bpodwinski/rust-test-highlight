@@ -115,6 +115,24 @@ This same `rustTestHighlight.backgroundColor` token is used for both the inline 
 
 > **Note** - VS Code's stable decoration API does not expose a minimap-specific color channel for extension decorations. The supported approach is to render markers in the overview ruler (which is aligned with minimap navigation).
 
+## Semantic Token Coloring (Minimap Text)
+
+This extension also contributes a semantic token type for inline `mod tests` scopes: `rustTestHighlight.testScope`.
+When semantic highlighting is enabled in your theme/editor, this can color the code text in the editor and minimap.
+
+Use `rustTestHighlight.semanticTokens.enabled` (default: `true`) to enable or disable semantic token emission from this extension.
+
+```jsonc
+// user `settings.json` (or workspace `.vscode/settings.json`)
+"rustTestHighlight.semanticTokens.enabled": true,
+"editor.semanticTokenColorCustomizations": {
+  "enabled": true,
+  "rules": {
+    "rustTestHighlight.testScope": "#7aa2f7"
+  }
+}
+```
+
 ## License
 
 [MIT License](./LICENSE)

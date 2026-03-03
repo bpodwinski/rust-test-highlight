@@ -32,7 +32,23 @@
 					"highContrast": "#cfcfcf55"
 				}
 			}
-		]
+		],
+		"semanticTokenTypes": [
+			{
+				"id": "rustTestHighlight.testScope",
+				"description": "Semantic token type for Rust inline tests module scope."
+			}
+		],
+		"configuration": {
+			"title": "Rust Test Highlight",
+			"properties": {
+				"rustTestHighlight.semanticTokens.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable semantic token coloring for inline tests scope."
+				}
+			}
+		}
 	},
 	"activationEvents": [
 		"onLanguage:rust"
