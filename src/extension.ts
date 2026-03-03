@@ -87,6 +87,9 @@ export function activate(context: vscode.ExtensionContext) {
 			testDecoration ??= vscode.window.createTextEditorDecorationType({
 				// use a themable color. See package.json for the declaration and default values.
 				backgroundColor: { id: "rustTestHighlight.backgroundColor" },
+				// VS Code does not expose minimap-specific decoration colors; use the overview ruler.
+				overviewRulerColor: new vscode.ThemeColor("rustTestHighlight.backgroundColor"),
+				overviewRulerLane: vscode.OverviewRulerLane.Full,
 				// IDEA: should this be user configurable?
 				isWholeLine: true,
 				rangeBehavior: vscode.DecorationRangeBehavior.ClosedClosed,

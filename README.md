@@ -37,6 +37,7 @@ Inline test modules in Rust are usually pretty great, but when working in large 
 That's why I created the `Rust Test Highlight` extension to automatically apply a customizable background color to inline test modules. That way, as you zip through your file you'll be able to quickly distinguish between your test code and your code under test.
 
 Once installed, the extension will automatically activate whenever you open a file with the `rust` language mode, and apply your chosen highlight color (or the defaults if you don't care to customize it) to the inline `tests` module in your open editors.
+The extension also draws markers in VS Code's overview ruler for those highlighted test ranges, which gives you a minimap-correlated visual cue while navigating long files.
 
 As of now, this is the extent of the test code that is highlighted, and free `#[test]` functions that are not part of a `mod tests` are not highlighted. This is for the simple reason that using a `tests` module is recommended [by the Rust documentation](https://doc.rust-lang.org/book/ch11-03-test-organization.html#the-tests-module-and-cfgtest). Further, integration tests (or in general, tests which aren't part of an inline module and are in a file that is already well-identified as being test code because the file is called, for example `test.rs`) are not highlighted. In short, the goal of this extension is to make it easier to spot inline tests, and it encourages the use of the `tests` module convention when doing so.
 
@@ -109,6 +110,10 @@ fn test_add() {}
 ```
 
 Note that any color recognized as a color by VS Code's settings parsing will work, so `rgb`, `rgba`, `hex` and `hex with alpha` all will work just fine, and it's recommended that you _do include_ an alpha value (ideally, a pretty low one) so that the highlight doesn't interfere with other decorations, color themes, or syntax highlighting.
+
+This same `rustTestHighlight.backgroundColor` token is used for both the inline background highlight and the overview ruler markers.
+
+> **Note** - VS Code's stable decoration API does not expose a minimap-specific color channel for extension decorations. The supported approach is to render markers in the overview ruler (which is aligned with minimap navigation).
 
 ## License
 

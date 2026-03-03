@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+
+- Add overview ruler markers for highlighted `tests` modules, using `rustTestHighlight.backgroundColor` for both editor background and overview ruler rendering.
+
 ## [0.1.5] - 2024-02-27
 
 ### Added
